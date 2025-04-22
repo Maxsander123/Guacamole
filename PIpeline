@@ -1,0 +1,7 @@
+docker network create guac-net \
+&& docker run -d --name guacd --network guac-net guacamole/guacd \
+&& docker run -d --name guacamole \
+     --network guac-net \
+     -p 80:8080 \
+     -e GUACD_HOSTNAME=guacd \
+     guacamole/guacamole
